@@ -35,6 +35,80 @@ vector<vector<double>>  multiplyer(vector<vector<double>> lhs, vector<vector<dou
 
 }	
 
+/*
+ *	Swap vector indices.
+ */
+void swapRow(vector<vector<double> > &matrix, int loopIter, int lrgstCol)
+{
+
+	swap(matrix[loopIter], matrix[lrgstCol]);
+}
+
+
+/*
+ *	Finds the row which the largest column belongs.
+ */
+int findLargestCol(vector<vector<double> > &matrix, int col)
+{
+	int largest = 0;
+	double largestVal = 0.0;
+	for (int i = 0; i < matrix.size(); i++)
+	{
+		if (matrix[i][col] > largestVal)
+		{
+			largest = i;
+			largestVal = matrix[i][col];
+		}
+
+	}
+	return largest;
+}
+
+/*
+ *	Takes a matrix, and for each row (i.e. iteration of the calling loop).
+ *	Scalar used to scale the matrix.
+ */
+void scale(vector<vector<double> > &matrix, int loopIter, double scalar)
+{
+	for (int cIndex = 0; cIndex < matrix[0].size(); cIndex++)
+	{
+		// the loopIter is the row that is being manipulated.
+		matrix[loopIter][cIndex] = matrix[loopIter][cIndex] / scalar;
+	}
+}
+
+void eliminate(vector<vector<double> > &matrix, int rowIt)
+{
+	// Start column.
+	int sCol = rowIt;
+	for (int i = rowIt + 1; i < matrix.size(); i++)
+	{
+		double scalar = matrix[i][rowIt];
+
+		for (int j = sCol; j < matrix[0].size(); j++)
+		{
+			matrix[i][j] = matrix[i][j] - scalar * matrix[rowIt][j];
+		}
+		matrix[i][sCol] = 0;
+	}
+
+}
+
+void backSolve(vector<vector<double> >&matrix)
+{
+	int augCol	= matrix[0].size()-1;
+	int lastRow = matrix.size() -1;
+	for (int i = lastRow; i >=  1; i--)
+	{
+		for( int j = i-1; j >= 0; j--)
+		{
+			double scalar = matrix[j][i];
+			matrix[j][i] -= scalar * matrix[i][i];
+			matrix[j][augCol] -= scalar *matrix[i][augCol];
+		}	
+	}
+}
+
 
 int main(int argc, char **argv )
 {
@@ -66,7 +140,8 @@ int main(int argc, char **argv )
 	ifstream matrixFile;
 	// path to file
 	string path = argv[1];
-	
+
+	// Check if the path is correct.	
 	matrixFile.open(path);
 	if (!matrixFile)
 	{
@@ -80,11 +155,24 @@ int main(int argc, char **argv )
 				matrix.push_back(inputLine);
 			}
 
-	for (int i = 0; i < matrix.size(); i++)
+	for (int i = 0; i < matrix.size()-1; i++)
 	{
-		vector<double> largestCol = findLargestCol(matrix);
+		int lrgstRow = findLargestCol(matrix, i);
+		
+		// swap the rows.
+		swapRow(matrix, i, lrgstRow);
+		
+		// scale the row.
+		scale(matrix, i, matrix[i][i]);
+		matrix[i][i] = 1;
+		eliminate(matrix, i);
 	}
-
+	double scalar = 0.0;
+	// Lastrow needs to be solved.
+	scalar = 1/matrix[matrix.size()-1][matrix[0].size()-2];
+	matrix[matrix.size()-1][matrix[0].size()-2] = 1;
+	matrix[matrix.size()-1][matrix[0].size()-1] = matrix[matrix.size()-1][matrix[0].size()-1]*scalar;
+	backSolve(matrix);
 	printMatrix(matrix);
 
 }
