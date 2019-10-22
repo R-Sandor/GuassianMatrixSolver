@@ -31,7 +31,7 @@ while (matrixFilex != eof)
 > 2)In the real world I would double check all the files are well formed
 That is that our columns do not change size in the middle of the file. 
 In this case I will opt to make the assumption that the user is responsible for
-maintaining dimensions.
+maintaining dimensions.  
 
 
 > 3) With that out the way we can start working on some of fun matrix solving!
