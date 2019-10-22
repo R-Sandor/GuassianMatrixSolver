@@ -111,7 +111,7 @@ void backSolve(vector<vector<double>> &matrix)
 ```
 
 # Requirements
-> gcc 
+> gcc      
 > gnu make
 
 
