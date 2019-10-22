@@ -139,4 +139,4 @@ The program only takes one parameter, the file path
 to matrix one wishes to solve. 
 
 # Author 
--Raphael J. Sandor  
+Raphael J. Sandor  
