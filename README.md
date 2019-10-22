@@ -29,7 +29,7 @@ while (matrixFilex != eof)
 
 
 > 2)In the real world I would double check all the files are well formed
-That is that our columns do not change size in the middle of the file. 
+That is that our columns do not change size in the middle of the file.       
 In this case I will opt to make the assumption that the user is responsible for
 maintaining dimensions.  
 
