@@ -1,10 +1,10 @@
-#GUASSIAN MATRIX SOLVER
+# GUASSIAN MATRIX SOLVER
 > This program will solve a given matrix. The input must be in terms a file that contains to matrices 
 
-##Language 
+## Language 
 > C++
 
-#Pseudocode
+# Pseudocode
 ### My pseudocode is a watered down version c++; emitting some syntax for brevity.
 
 
@@ -33,11 +33,14 @@ while (matrixFilex != eof)
 //In this case I will opt to make the assumption that the user is responsible for
 //maintaining dimensions.
 > 3) With that out the way we can start working on some of fun matrix solving!
+```c++
 //Also need to check if the file exist.
 if (!matrixFile)
 {
 	cout << "Error, check file path" << endl;
 }
+```
+
 
 > Pivot
 
