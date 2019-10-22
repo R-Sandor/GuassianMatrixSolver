@@ -110,19 +110,22 @@ void backSolve(vector<vector<double>> &matrix)
 }
 ```
 
-#Requirements
+# Requirements
+> gcc 
+> gnu make
 
-#Project Layout
-##Build
+
+# Project Layout
+## Build
 > compiled src code excluding the program executable
 
-##Include
+## Include
 > .h files
 
-##res
+## res
 > Resource files, matrices to solve
 
-#src
+## src
 >Source code
 
 
