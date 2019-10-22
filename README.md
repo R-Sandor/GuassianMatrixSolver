@@ -138,5 +138,5 @@ void backSolve(vector<vector<double>> &matrix)
 The program only takes one parameter, the file path
 to matrix one wishes to solve. 
 
-#Author 
+# Author 
 -Raphael J. Sandor  
