@@ -9,7 +9,7 @@
 
 
 
->> 1)Read Input file 
+> 1)Read Input file 
 
 
 ofstream matrixFile;
@@ -121,8 +121,8 @@ void backSolve(vector<vector<double>> &matrix)
 
 ### To Run
 > ./MatrixSolver res/matrix.txt
-
-
+The program only takes one parameter, the file path
+to matrix one wishes to solve. 
 
 #Author 
 -Raphael J. Sandor  
