@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector> //used for print matrix 
+#include <iomanip> //setprecision
 #include "helper.h"
 
 
@@ -26,6 +27,12 @@ int itemCount(string str, string delim)
 	return count;
 
 }
+
+/*
+ * Converts a string of numbers to a vector
+ * e.g. string str ="10 11 12", would become
+ * a vector of size 3, holding 10, 11, and 12.
+ */
 
 vector<double> stringToVector(string str, string delim)
 {
@@ -55,10 +62,25 @@ vector<double> stringToVector(string str, string delim)
 
 void printMatrix(vector<vector<double> > matrix)
 {
+	for (int i = 0; i < matrix.size()* 2 +15; i++)
+		cout << "-";
+	cout << endl;
 	for (int i = 0; i < matrix.size(); i++)
 	{
 		for (int j = 0; j < matrix[i].size(); j++)
-				cout << matrix[i][j] << " "; 
+		{
+			if (j == 0)
+				cout << "| ";
+			if (j == matrix[i].size()-1)
+			{
+				cout << "| " << setw(10) << matrix[i][j] << "|";
+				continue;
+			}
+			cout << setprecision(8) << matrix[i][j] << " "; 
+		}
 		cout << endl;
 	}
+	for (int i = 0; i < matrix.size()*2 +15; i++)
+		cout << "-";
+	cout << endl;
 }
