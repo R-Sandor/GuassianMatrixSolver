@@ -11,7 +11,7 @@
 
 > 1)Read Input file 
 
-
+```c++
 ofstream matrixFile;
 matrixAFile.open(argc[1]);
 
@@ -26,7 +26,7 @@ while (matrixFilex != eof)
 	
 	matrix.push_back(vectToAdd)());
 }	
-
+```
 
 > 2)In the real world I would double check all the files are well formed
 That is that our columns do not change size in the middle of the file.       
@@ -45,7 +45,7 @@ if (!matrixFile)
 
 
 > Pivot
-
+```c++
 for (int i = 0; i < matrix.size())
 {
 	
@@ -58,10 +58,11 @@ for (int i = 0; i < matrix.size())
 
 	eliminate(matrix, i);
 }
-
+```
 
 
 > 4) functions from above.
+```c++
 void scale(vector<vector<double>>&matrix, int i, double scalingFactor)
 {
 	for(int j = 0; j < matrix[0].size(); i++)
@@ -69,9 +70,11 @@ void scale(vector<vector<double>>&matrix, int i, double scalingFactor)
 		matrix[i][j] = matrix[i][j] /s;
 	}
 }
-
+```
 
 > 5) eliminate
+
+```c++
 void eliminate(vector<vector<double>> &matrix, int i)
 {
 	int startCol = i;
@@ -84,8 +87,11 @@ void eliminate(vector<vector<double>> &matrix, int i)
 		}
 	}	
 }
+```
 
 > 6) Back solve
+
+```c++
 void backSolve(vector<vector<double>> &matrix)
 {
 	int augCol = matrix[0].size();
@@ -102,7 +108,7 @@ void backSolve(vector<vector<double>> &matrix)
 		}
 	} 
 }
-
+```
 
 #Requirements
 
