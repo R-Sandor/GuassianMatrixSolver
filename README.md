@@ -9,7 +9,7 @@
 
 
 
-> 1)Read Input file 
+> 1) Read Input file 
 
 ```c++
 ofstream matrixFile;
@@ -28,7 +28,7 @@ while (matrixFilex != eof)
 }	
 ```
 
-> 2)In the real world I would double check all the files are well formed
+> 2) In the real world I would double check all the files are well formed
 That is that our columns do not change size in the middle of the file.       
 In this case I will opt to make the assumption that the user is responsible for
 maintaining dimensions.  
@@ -126,7 +126,7 @@ void backSolve(vector<vector<double>> &matrix)
 > Resource files, matrices to solve
 
 ## src
->Source code
+> Source code
 
 
 # Setup/Compilation & Execution Instructions  
